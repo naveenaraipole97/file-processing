@@ -1,0 +1,20 @@
+{
+  "name": "presigned-url",
+  "version": "0.0.1",
+  "description": "lambda to generate presigned url for user file uploads",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "lambda",
+    "presigned-url"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-s3": "3.552.0",
+    "@aws-sdk/s3-request-presigner": "3.552.0"
+  },
+  "type": "module"
+}

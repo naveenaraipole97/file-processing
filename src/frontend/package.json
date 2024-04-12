@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "REACT_APP_BACKEND_API_URL=$(aws apigatewayv2 get-apis --query 'Items[?Name==`backend-lambda-api`].ApiEndpoint' --output text --region us-east-1) REACT_APP_PRE_SIGNED_API_URL=$(aws apigatewayv2 get-apis --query 'Items[?Name==`pre-signed-url-lambda-api`].ApiEndpoint' --output text --region us-east-1) react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

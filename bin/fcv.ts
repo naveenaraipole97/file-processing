@@ -12,7 +12,8 @@ new PresignedUrlStack(app, 'PresignedUrlStack', {});
 
 
 new FrontendStack(app, 'FrontendStack', {
-  preSignedUrlApi: cdk.Fn.importValue('PreSignedApiUrl')
+  preSignedUrlApi: app.node.tryGetContext('preSignedApiUrl'),
+  backendApiUrl: app.node.tryGetContext('backendApiUrl')
 });
 
 

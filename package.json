@@ -8,7 +8,8 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
-    "cdk": "cdk"
+    "cdk": "cdk",
+    "cdk-deploy": "cdk deploy BackendStack --exclusively && cdk deploy PresignedUrlStack --exclusively && cdk deploy WorkerStack --exclusively && cdk deploy FrontendStack --context backendApiUrl=$(aws apigatewayv2 get-apis --query 'Items[?Name==`backend-lambda-api`].ApiEndpoint' --output text --region us-east-1) --context preSignedApiUrl=$(aws apigatewayv2 get-apis --query 'Items[?Name==`pre-signed-url-lambda-api`].ApiEndpoint' --output text --region us-east-1) --exclusively"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",

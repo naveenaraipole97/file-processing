@@ -9,6 +9,7 @@ import * as path from 'path';
 import { spawnSync, SpawnSyncOptions } from 'child_process';
 
 export interface FrontendStackProps extends cdk.StackProps {
+  backendApiUrl: string
   preSignedUrlApi: string
 }
 
@@ -70,13 +71,13 @@ export class FrontendStack extends cdk.Stack {
                     'npm run build'
                   ].join(' && '),
                   {
-                    env: { ...process.env, /*REACT_APP_API_URL:props?.preSignedUrlApi*/ }, // environment variables to use when running the build command
+                    env: { ...process.env, "REACT_APP_BACKEND_API_URL":props?.backendApiUrl, "REACT_APP_PRE_SIGNED_API_URL":props?.preSignedUrlApi, }, // environment variables to use when running the build command
                     stdio: [ // show output
                       'ignore', //ignore stdio
                       process.stderr, // redirect stdout to stderr
                       'inherit' // inherit stderr
                     ],
-                    cwd: entry // where to run the build command from, i.e. the directory where our nuxt.js app is located
+                    cwd: entry // where to run the build command from, i.e. the directory where our app is located
                   }
                 )
 
@@ -85,7 +86,7 @@ export class FrontendStack extends cdk.Stack {
               }
 
               try {
-                // copy the dist directory that is created with 'npm generate'
+                // copy the build directory that is created with 'npm build'
                 // to the cdk outDir
                 fs.copySync(path.join(entry, 'build'), outputDir);
               } catch {
@@ -99,7 +100,7 @@ export class FrontendStack extends cdk.Stack {
           command: [
             'bash', '-c', [
               'npm install',
-              /*`REACT_APP_API_URL=${props?.preSignedUrlApi}*/`npm run build`,
+              `REACT_APP_PRE_SIGNED_API_URL=${props?.preSignedUrlApi} REACT_APP_BACKEND_API_URL=${props?.backendApiUrl} npm run build`,
               'cp -r ./build/* /asset-output/',
             ].join(' && ')
           ],

@@ -8,15 +8,10 @@ import { WorkerStack } from '../lib/worker-stack';
 
 const app = new cdk.App();
 
-new PresignedUrlStack(app, 'PresignedUrlStack', {});
-
-
-new FrontendStack(app, 'FrontendStack', {
-  preSignedUrlApi: app.node.tryGetContext('preSignedApiUrl'),
-  backendApiUrl: app.node.tryGetContext('backendApiUrl')
-});
-
-
 new BackendStack(app, 'BackendStack', {});
 
+new PresignedUrlStack(app, 'PresignedUrlStack', {});
+
 new WorkerStack(app, 'WorkerStack', {});
+
+new FrontendStack(app, 'FrontendStack', {});

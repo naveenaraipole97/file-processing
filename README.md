@@ -22,9 +22,6 @@
 - Bootstrap your accouint. This is one-time action that you must perform for every environment that you deploy resources into.(eg when you want to deploy to new account or new env). This will create required resources for CDK to deploy stacks
 - cdk bootstrap aws://ACCOUNT-NUMBER-1/REGION-1
 - Start docker this is required to install node modules during deploy
-- nanoid is having compatability issues with esmodules so manually install modules in backend
-- cd src/backend && npm install
-- all other stacks have auto bundling dureing deploy 
 - set AWS_PROFILE env var which has admin access (`export AWS_PROFILE=<awsprofile with admin access>`)
 - Now deploy resources `npm run cdk-deploy`. This will create CF stacks one after another
 - click on `FrontendStack.CloudFrontURL` from frontend stack outputs you should see the frontend loaded 

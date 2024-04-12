@@ -8,13 +8,9 @@ import * as origins from 'aws-cdk-lib/aws-cloudfront-origins';
 import * as path from 'path';
 import { spawnSync, SpawnSyncOptions } from 'child_process';
 
-export interface FrontendStackProps extends cdk.StackProps {
-  backendApiUrl: string
-  preSignedUrlApi: string
-}
 
 export class FrontendStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: FrontendStackProps) {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
     // s3-frontend-assets
@@ -71,7 +67,7 @@ export class FrontendStack extends cdk.Stack {
                     'npm run build'
                   ].join(' && '),
                   {
-                    env: { ...process.env, "REACT_APP_BACKEND_API_URL":props?.backendApiUrl, "REACT_APP_PRE_SIGNED_API_URL":props?.preSignedUrlApi, }, // environment variables to use when running the build command
+                    env: { ...process.env, }, // environment variables to use when running the build command
                     stdio: [ // show output
                       'ignore', //ignore stdio
                       process.stderr, // redirect stdout to stderr
@@ -100,7 +96,7 @@ export class FrontendStack extends cdk.Stack {
           command: [
             'bash', '-c', [
               'npm install',
-              `REACT_APP_PRE_SIGNED_API_URL=${props?.preSignedUrlApi} REACT_APP_BACKEND_API_URL=${props?.backendApiUrl} npm run build`,
+              `npm run build`,
               'cp -r ./build/* /asset-output/',
             ].join(' && ')
           ],

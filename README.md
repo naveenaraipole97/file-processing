@@ -25,7 +25,7 @@
 - nanoid is having compatability issues with esmodules so manually install modules in backend
 - cd src/backend && npm install
 - all other stacks have auto bundling dureing deploy 
-- set AWS_PROFILE env var which has admin access
+- set AWS_PROFILE env var which has admin access (`export AWS_PROFILE=<awsprofile with admin access>`)
 - Now deploy resources `npm run cdk-deploy`. This will create CF stacks one after another
 - click on `FrontendStack.CloudFrontURL` from frontend stack outputs you should see the frontend loaded 
 - Now upload file and add input text verify you can see those details in FileTable

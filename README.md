@@ -19,7 +19,7 @@
 - [Configure AWS Cli](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) with IAM user credentials (Access Key and Secret Access Key)
 - prefer using short-term-creds by running `aws sts get-session-token` and configuring aws cli with the returned credentials
 - [Clone repo](https://github.com/naveenaraipole97/file_upload_app2.git) and open in VS Code
-- Bootstrap your accouint. This is one-time action that you must perform for every environment that you deploy resources into.(eg when you want to deploy to new account or new env). This will create required resources for CDK to deploy stacks
+- Bootstrap your account. This is one-time action that you must perform for every environment that you deploy resources into.(eg when you want to deploy to new account or new env). This will create required resources for CDK to deploy stacks
 - cdk bootstrap aws://ACCOUNT-NUMBER-1/REGION-1
 - Start docker this is required to install node modules during deploy
 - set AWS_PROFILE env var which has admin access (`export AWS_PROFILE=<awsprofile with admin access>`)
@@ -32,7 +32,7 @@
 ## Stacks and their resources
 
 ### frontend-stack
-- Purpose of this stack is to server frontend content via S3 and CloudFront
+- Purpose of this stack is to serve frontend content via S3 and CloudFront
 - It has one s3 bucket(`${this.account}-${this.region}-file-uploader-ui`) to store frontend code and this code gets bundled during synth stage 
 
 ### presigned-url-stack

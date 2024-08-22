@@ -2,7 +2,7 @@
 [Working demo](https://drive.google.com/file/d/1Jo9x24CxLVttQWeQcBsVCjLixGuRho4e/view?usp=sharing)
 
 # Architecture
-<img width="452" alt="image" src="https://github.com/naveenaraipole97/file-processing/blob/0a00d281fb0024c3e0c94dd8e79a2cd8bff6ab65/assets/file_processing_app_architecture.pdf">
+[Link](https://github.com/naveenaraipole97/file-processing/blob/0a00d281fb0024c3e0c94dd8e79a2cd8bff6ab65/assets/file_processing_app_architecture.pdf)
 
 # Steps to deploy and run:
 - [Install node lts V20 for your machine](https://nodejs.org/en/download)

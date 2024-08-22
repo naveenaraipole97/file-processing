@@ -1,6 +1,9 @@
 # Demo 
 [Working demo](https://drive.google.com/file/d/1Jo9x24CxLVttQWeQcBsVCjLixGuRho4e/view?usp=sharing)
 
+# Running Application
+[Website](https://dlm1rufqygxlf.cloudfront.net/)
+
 # Architecture
 <img width="452" alt="image" src="https://github.com/naveenaraipole97/file_upload_app2/assets/144768728/732a3715-e052-4aca-b5d6-8658cc073b73">
 
@@ -16,20 +19,20 @@
 - [Configure AWS Cli](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) with IAM user credentials (Access Key and Secret Access Key)
 - prefer using short-term-creds by running `aws sts get-session-token` and configuring aws cli with the returned credentials
 - [Clone repo](https://github.com/naveenaraipole97/file_upload_app2.git) and open in VS Code
-- Bootstrap your accouint. This is one-time action that you must perform for every environment that you deploy resources into.(eg when you want to deploy to new account or new env). This will create required resources for CDK to deploy stacks
+- Bootstrap your account. This is one-time action that you must perform for every environment that you deploy resources into.(eg when you want to deploy to new account or new env). This will create required resources for CDK to deploy stacks
 - cdk bootstrap aws://ACCOUNT-NUMBER-1/REGION-1
 - Start docker this is required to install node modules during deploy
-- nanoid is having compatability issues with esmodules so manually install modules in backend
-- cd src/backend && npm install
-- all other stacks have auto bundling dureing deploy 
-- run cdk deploy --profile `<your aws profile>`
+- set AWS_PROFILE env var which has admin access (`export AWS_PROFILE=<awsprofile with admin access>`)
+- Now deploy resources `npm run cdk-deploy`. This will create CF stacks one after another
 - click on `FrontendStack.CloudFrontURL` from frontend stack outputs you should see the frontend loaded 
+- Now upload file and add input text verify you can see those details in FileTable
+- After sometime lambda will kick off new workers which will process the file and create new output file verify that outfile exists in s3 and new field is added to dynamo table item
 
 
 ## Stacks and their resources
 
 ### frontend-stack
-- Purpose of this stack is to server frontend content via S3 and CloudFront
+- Purpose of this stack is to serve frontend content via S3 and CloudFront
 - It has one s3 bucket(`${this.account}-${this.region}-file-uploader-ui`) to store frontend code and this code gets bundled during synth stage 
 
 ### presigned-url-stack

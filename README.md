@@ -1,9 +1,6 @@
 # Demo 
 [Working demo](https://drive.google.com/file/d/1Jo9x24CxLVttQWeQcBsVCjLixGuRho4e/view?usp=sharing)
 
-# Running Application
-[Website](https://dlm1rufqygxlf.cloudfront.net/)
-
 # Architecture
 <img width="452" alt="image" src="https://github.com/naveenaraipole97/file_upload_app2/assets/144768728/732a3715-e052-4aca-b5d6-8658cc073b73">
 
